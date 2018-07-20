@@ -78,7 +78,7 @@ public class CategoriesFragment extends Fragment {
         categoryList.setLayoutManager(layoutManager);
         adapter =
                 new CategoryListAdapter(categories, getActivity(), this.toString());
-        categoryList.swapAdapter(adapter, true);
+        categoryList.setAdapter(adapter);
     }
 
     private void subscribeToResponseObserver() {

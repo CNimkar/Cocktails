@@ -36,6 +36,7 @@ public class DrinkDetailListingViewModel extends ViewModel {
     public void getData() {
         ListingService webService =
                 ListingService.retrofit.create(ListingService.class);
+        Log.d("Testing",Constants.getUrlByFilterAndName(type, name));
         Call<DrinkDetailListing> call = webService.filterByMentioned(Constants.getUrlByFilterAndName(type, name));
         call.enqueue(new Callback<DrinkDetailListing>() {
             @Override
