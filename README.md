@@ -13,5 +13,6 @@ The api used is: https://www.thecocktaildb.com/
 
 <img src="https://user-images.githubusercontent.com/7290739/43020595-85c210e4-8c2e-11e8-8827-cb9f41892f0b.jpg" width="400" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/7290739/43020602-8b7528dc-8c2e-11e8-93c1-ae137ab31553.jpg" width="400" />    
 
-## 5.Show full detials about a cocktail(Still to be completed) <img src="https://user-images.githubusercontent.com/7290739/43020606-8fca9c64-8c2e-11e8-9650-3a6e40bfc770.jpg" width="400" />
+## 5.Show full detials about a cocktail(Still to be completed)
+<img src="https://user-images.githubusercontent.com/7290739/43020606-8fca9c64-8c2e-11e8-9650-3a6e40bfc770.jpg" width="400" />
 
