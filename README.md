@@ -6,6 +6,9 @@ The api used is: https://www.thecocktaildb.com/
 ### Architecture used: MVVM with Repository
 ### Libraries used: Retrofit, Glide, Android Architecture Components, Butterknife, CardView
 
+
+## Navigation:
+
 ## 1. List cocktail titles by category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2. List cocktail titles by glass type
 
 
