@@ -16,5 +16,5 @@ The api used is: https://www.thecocktaildb.com/
 ## 5. Show full detials about a cocktail(Still to be completed)
 <img src="https://user-images.githubusercontent.com/7290739/43020606-8fca9c64-8c2e-11e8-9650-3a6e40bfc770.jpg" width="400" />
 
-###Architecture used: MVVM with Repository
-###Libraries used: Retrofit, Glide, Android Architecture Components, Butterknife, CardView
+### Architecture used: MVVM with Repository
+### Libraries used: Retrofit, Glide, Android Architecture Components, Butterknife, CardView
