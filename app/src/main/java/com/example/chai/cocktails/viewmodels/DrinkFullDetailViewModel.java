@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -18,7 +19,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DrinkFullDetailViewModel extends AndroidViewModel {
+public class DrinkFullDetailViewModel extends ViewModel {
 
     String id;
     public MutableLiveData<DrinkFullDetail> drinkObservable;
@@ -29,8 +30,7 @@ public class DrinkFullDetailViewModel extends AndroidViewModel {
         }
     }
 
-    public DrinkFullDetailViewModel(@NonNull Application application) {
-        super(application);
+    public DrinkFullDetailViewModel() {
         drinkObservable = new MutableLiveData<>();
         getData();
     }

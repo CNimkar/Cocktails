@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -18,14 +19,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DrinkDetailListingViewModel extends AndroidViewModel {
+public class DrinkDetailListingViewModel extends ViewModel {
 
     public MutableLiveData<List<DrinkDetail>> drinksObservable;
     String type;
     String name;
 
-    public DrinkDetailListingViewModel(@NonNull Application application) {
-        super(application);
+    public DrinkDetailListingViewModel() {
         drinksObservable = new MutableLiveData<>();
     }
 

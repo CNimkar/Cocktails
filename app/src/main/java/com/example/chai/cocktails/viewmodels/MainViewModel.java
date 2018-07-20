@@ -3,6 +3,7 @@ package com.example.chai.cocktails.viewmodels;
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -17,14 +18,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainViewModel extends AndroidViewModel {
+public class MainViewModel extends ViewModel {
 
     public MutableLiveData<List<Drink>> categoryObservable;
     public MutableLiveData<List<Drink>> glassObservable;
     public MutableLiveData<List<Drink>> ingredientObservable;
 
-    public MainViewModel(@NonNull Application application) {
-        super(application);
+    public MainViewModel() {
         categoryObservable = new MutableLiveData<>();
         glassObservable = new MutableLiveData<>();
         ingredientObservable = new MutableLiveData<>();
