@@ -12,10 +12,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.adapters.CategoryListAdapter;
 import com.example.chai.cocktails.models.Drink;
+import com.example.chai.cocktails.models.NameListingAPIResponse;
 import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.viewmodels.MainViewModel;
 
@@ -31,7 +33,6 @@ public class CategoriesFragment extends Fragment {
     RecyclerView categoryList;
     MainViewModel mainViewModel;
     CategoryListAdapter adapter;
-    List<Drink> categories;
 
     public CategoriesFragment() {
     }
@@ -49,43 +50,87 @@ public class CategoriesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_categories, container, false);
         ButterKnife.bind(this, view);
 
-        categories = new ArrayList<>();
 
         mainViewModel = ViewModelProviders.of((AppCompatActivity) getActivity())
                 .get(MainViewModel.class);
 
-        loadData();
-        initViewModel();
+        loadEmptyData();
+        subscribeToResponseObserver();
         mainViewModel.getData(this.toString());
 
         return view;
 
     }
 
-    private void initViewModel() {
-        mainViewModel.categoryObservable.observe((AppCompatActivity) getActivity(), new Observer<List<Drink>>() {
-            @Override
-            public void onChanged(@Nullable List<Drink> drinks) {
-                categories.clear();
-                categories.addAll(drinks);
-                if (adapter == null) {
-                    loadData();
-                } else {
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });
+
+    private void loadEmptyData() {
+        LinearLayoutManager layoutManager =
+                new LinearLayoutManager(getActivity());
+        categoryList.setLayoutManager(layoutManager);
+        adapter =
+                new CategoryListAdapter(new ArrayList<Drink>(), getActivity(), this.toString());
+        categoryList.setAdapter(adapter);
     }
 
-    private void loadData() {
+    private void loadDataWithSubscription(List<Drink> categories) {
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(getActivity());
         categoryList.setLayoutManager(layoutManager);
         adapter =
                 new CategoryListAdapter(categories, getActivity(), this.toString());
-        categoryList.setAdapter(adapter);
+        categoryList.swapAdapter(adapter, true);
     }
 
+    private void subscribeToResponseObserver(){
+        mainViewModel.nameListingAPIResponse.observe((AppCompatActivity)getActivity(), new Observer<NameListingAPIResponse>() {
+            @Override
+            public void onChanged(@Nullable NameListingAPIResponse nameListingAPIResponse) {
+                switch(nameListingAPIResponse.getResponseType()){
+                    case NameListingAPIResponse.SUCCESSFUL_RESPONSE:
+                        loadDataWithSubscription(nameListingAPIResponse.getDrinks());
+                        break;
+                    case NameListingAPIResponse.REQUEST_ERROR_RESPONSE:
+                    case NameListingAPIResponse.THROWABLE_ERROR_RESPONSE:
+                        displayNetworkingErrorToast();
+                }
+            }
+        });
+    }
+
+    private void displayNetworkingErrorToast() {
+        Toast.makeText(getActivity(),
+                "Sorry, we were unable get a list of the stores you want to see.",
+                Toast.LENGTH_LONG).show();
+    }
+
+    /*private void subscribeToAdapterDataObserver() {
+        Observer<BottleRocketAPIResponse> bottleRocketAPIResponseObserver = new Observer<BottleRocketAPIResponse>() {
+            @Override
+            public void onChanged(@Nullable BottleRocketAPIResponse bottleRocketAPIResponse) {
+                switch (bottleRocketAPIResponse.getResponseType()) {
+                    case BottleRocketAPIResponse.SUCCESSFUL_RESPONSE:
+
+                        StoresRecyclerViewAdapter adapterWithData =
+                                new StoresRecyclerViewAdapter(getActivity(),
+                                        bottleRocketAPIResponse.getStores().getStoreList());
+
+                        recyclerView.swapAdapter(adapterWithData, true);
+
+                        break;
+
+                    case BottleRocketAPIResponse.REQUEST_ERROR_RESPONSE:
+                        displayNetworkingErrorToast();
+                        break;
+                    case BottleRocketAPIResponse.THROWABLE_ERROR_RESPONSE:
+                        displayNetworkingErrorToast();
+                        break;
+                }
+            }
+        };
+
+        viewModel.getBottleRocketAPIResponse().observe(getActivity(), bottleRocketAPIResponseObserver);
+    }
+    */
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);

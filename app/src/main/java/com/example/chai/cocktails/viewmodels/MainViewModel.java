@@ -2,22 +2,38 @@ package com.example.chai.cocktails.viewmodels;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.util.Log;
 
-import com.example.chai.cocktails.interfaces.ListingService;
+import com.example.chai.cocktails.repository.CocktailRepository;
 import com.example.chai.cocktails.models.Drink;
-import com.example.chai.cocktails.models.DrinkListing;
-import com.example.chai.cocktails.utils.Constants;
+import com.example.chai.cocktails.models.NameListingAPIResponse;
 
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainViewModel extends ViewModel {
 
     public MutableLiveData<List<Drink>> categoryObservable;
+    public MutableLiveData<List<Drink>> glassObservable;
+    public MutableLiveData<List<Drink>> ingredientObservable;
+    public MutableLiveData<NameListingAPIResponse> nameListingAPIResponse;
+    CocktailRepository repository = CocktailRepository.getInstance();
+
+    public MainViewModel() {
+        categoryObservable = new MutableLiveData<>();
+        glassObservable = new MutableLiveData<>();
+        ingredientObservable = new MutableLiveData<>();
+        nameListingAPIResponse = new MutableLiveData<>();
+    }
+
+    public void getData(String filter){
+        nameListingAPIResponse = repository.getData(filter);
+    }
+
+
+}
+
+/*
+*
+* public MutableLiveData<List<Drink>> categoryObservable;
     public MutableLiveData<List<Drink>> glassObservable;
     public MutableLiveData<List<Drink>> ingredientObservable;
 
@@ -77,5 +93,4 @@ public class MainViewModel extends ViewModel {
 
         });
 
-    }
-}
+    }*/
