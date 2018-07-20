@@ -79,11 +79,11 @@ public class GlassesFragment extends Fragment {
         categoryList.swapAdapter(adapter, true);
     }
 
-    private void subscribeToResponseObserver(){
-        mainViewModel.nameListingAPIResponse.observe((AppCompatActivity)getActivity(), new Observer<NameListingAPIResponse>() {
+    private void subscribeToResponseObserver() {
+        mainViewModel.nameListingAPIResponse.observe((AppCompatActivity) getActivity(), new Observer<NameListingAPIResponse>() {
             @Override
             public void onChanged(@Nullable NameListingAPIResponse nameListingAPIResponse) {
-                switch(nameListingAPIResponse.getResponseType()){
+                switch (nameListingAPIResponse.getResponseType()) {
                     case NameListingAPIResponse.SUCCESSFUL_RESPONSE:
                         loadDataWithSubscription(nameListingAPIResponse.getDrinks());
                         break;

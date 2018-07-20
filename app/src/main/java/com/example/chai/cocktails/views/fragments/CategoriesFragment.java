@@ -81,11 +81,11 @@ public class CategoriesFragment extends Fragment {
         categoryList.swapAdapter(adapter, true);
     }
 
-    private void subscribeToResponseObserver(){
-        mainViewModel.nameListingAPIResponse.observe((AppCompatActivity)getActivity(), new Observer<NameListingAPIResponse>() {
+    private void subscribeToResponseObserver() {
+        mainViewModel.nameListingAPIResponse.observe((AppCompatActivity) getActivity(), new Observer<NameListingAPIResponse>() {
             @Override
             public void onChanged(@Nullable NameListingAPIResponse nameListingAPIResponse) {
-                switch(nameListingAPIResponse.getResponseType()){
+                switch (nameListingAPIResponse.getResponseType()) {
                     case NameListingAPIResponse.SUCCESSFUL_RESPONSE:
                         loadDataWithSubscription(nameListingAPIResponse.getDrinks());
                         break;
@@ -102,35 +102,6 @@ public class CategoriesFragment extends Fragment {
                 "Sorry, we were unable get a list of the stores you want to see.",
                 Toast.LENGTH_LONG).show();
     }
-
-    /*private void subscribeToAdapterDataObserver() {
-        Observer<BottleRocketAPIResponse> bottleRocketAPIResponseObserver = new Observer<BottleRocketAPIResponse>() {
-            @Override
-            public void onChanged(@Nullable BottleRocketAPIResponse bottleRocketAPIResponse) {
-                switch (bottleRocketAPIResponse.getResponseType()) {
-                    case BottleRocketAPIResponse.SUCCESSFUL_RESPONSE:
-
-                        StoresRecyclerViewAdapter adapterWithData =
-                                new StoresRecyclerViewAdapter(getActivity(),
-                                        bottleRocketAPIResponse.getStores().getStoreList());
-
-                        recyclerView.swapAdapter(adapterWithData, true);
-
-                        break;
-
-                    case BottleRocketAPIResponse.REQUEST_ERROR_RESPONSE:
-                        displayNetworkingErrorToast();
-                        break;
-                    case BottleRocketAPIResponse.THROWABLE_ERROR_RESPONSE:
-                        displayNetworkingErrorToast();
-                        break;
-                }
-            }
-        };
-
-        viewModel.getBottleRocketAPIResponse().observe(getActivity(), bottleRocketAPIResponseObserver);
-    }
-    */
 
     public interface OnFragmentInteractionListener {
         void onFragmentInteraction(Uri uri);

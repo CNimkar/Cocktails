@@ -18,7 +18,7 @@ public class CocktailRepository {
 
     private MutableLiveData<NameListingAPIResponse> nameListingApiResponse = new MutableLiveData<>();
 
-    public CocktailRepository(){
+    public CocktailRepository() {
         listingService = ListingService.retrofit.create(ListingService.class);
     }
 
