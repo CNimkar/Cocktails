@@ -2,6 +2,9 @@
 Cocktails is a cocktail recipe app
 The api used is: https://www.thecocktaildb.com/
 
+<img src="https://user-images.githubusercontent.com/7290739/43020578-79dc242c-8c2e-11e8-92a9-e425d323aad0.jpg" width="400" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/7290739/43020589-803ea1d2-8c2e-11e8-9309-31ad23253e2d.jpg" width="400" />              
+
+
 Navigation:
 List cocktail titles by category
 ![categories](https://user-images.githubusercontent.com/7290739/43020578-79dc242c-8c2e-11e8-92a9-e425d323aad0.jpg)
