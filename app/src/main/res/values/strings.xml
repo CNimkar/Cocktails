@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Cocktails</string>
+    <string name="title_home">Categories</string>
+    <string name="title_dashboard">Glasses</string>
+    <string name="title_notifications">Ingredients</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
