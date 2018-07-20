@@ -3,7 +3,7 @@ package com.example.chai.cocktails.viewmodels;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.example.chai.cocktails.models.NameListingAPIResponse;
+import com.example.chai.cocktails.models.apiresponsewrappers.NameListingAPIResponse;
 import com.example.chai.cocktails.repository.CocktailRepository;
 
 public class MainViewModel extends ViewModel {

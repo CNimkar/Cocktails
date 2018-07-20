@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.adapters.DrinkDetailListAdapter;
-import com.example.chai.cocktails.models.DrinkDetail;
+import com.example.chai.cocktails.models.pojos.DrinkDetail;
 import com.example.chai.cocktails.viewmodels.DrinkDetailListingViewModel;
 
 import java.util.ArrayList;

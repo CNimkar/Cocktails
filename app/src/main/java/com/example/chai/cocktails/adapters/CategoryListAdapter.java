@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.chai.cocktails.R;
-import com.example.chai.cocktails.models.Drink;
+import com.example.chai.cocktails.models.pojos.Drink;
 import com.example.chai.cocktails.views.activities.DrinkDetailListingActivity;
 
 import java.util.List;

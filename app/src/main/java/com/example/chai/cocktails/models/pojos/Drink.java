@@ -1,4 +1,4 @@
-package com.example.chai.cocktails.models;
+package com.example.chai.cocktails.models.pojos;
 
 import com.google.gson.annotations.SerializedName;
 

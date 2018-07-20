@@ -16,8 +16,8 @@ import android.widget.Toast;
 
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.adapters.CategoryListAdapter;
-import com.example.chai.cocktails.models.Drink;
-import com.example.chai.cocktails.models.NameListingAPIResponse;
+import com.example.chai.cocktails.models.pojos.Drink;
+import com.example.chai.cocktails.models.apiresponsewrappers.NameListingAPIResponse;
 import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.viewmodels.MainViewModel;
 

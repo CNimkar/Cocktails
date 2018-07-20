@@ -1,4 +1,4 @@
-package com.example.chai.cocktails.models;
+package com.example.chai.cocktails.models.pojos;
 
 public class DrinkDetail {
     String strDrink;

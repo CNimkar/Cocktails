@@ -6,8 +6,8 @@ import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
 import com.example.chai.cocktails.interfaces.ListingService;
-import com.example.chai.cocktails.models.DrinkFullDetail;
-import com.example.chai.cocktails.models.DrinkFullDetailWrapper;
+import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
+import com.example.chai.cocktails.models.wrapperpojos.DrinkFullDetailWrapper;
 import com.example.chai.cocktails.utils.Constants;
 
 import retrofit2.Call;

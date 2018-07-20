@@ -1,4 +1,6 @@
-package com.example.chai.cocktails.models;
+package com.example.chai.cocktails.models.wrapperpojos;
+
+import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
 
 import java.util.List;
 

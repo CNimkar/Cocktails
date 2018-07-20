@@ -1,4 +1,6 @@
-package com.example.chai.cocktails.models;
+package com.example.chai.cocktails.models.apiresponsewrappers;
+
+import com.example.chai.cocktails.models.pojos.Drink;
 
 import java.util.List;
 

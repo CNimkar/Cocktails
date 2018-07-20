@@ -3,8 +3,8 @@ package com.example.chai.cocktails.repository;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.example.chai.cocktails.interfaces.ListingService;
-import com.example.chai.cocktails.models.DrinkListing;
-import com.example.chai.cocktails.models.NameListingAPIResponse;
+import com.example.chai.cocktails.models.wrapperpojos.DrinkListing;
+import com.example.chai.cocktails.models.apiresponsewrappers.NameListingAPIResponse;
 import com.example.chai.cocktails.utils.Constants;
 
 import retrofit2.Call;

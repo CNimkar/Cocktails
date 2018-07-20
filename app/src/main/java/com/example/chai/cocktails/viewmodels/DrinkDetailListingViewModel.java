@@ -6,8 +6,8 @@ import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
 import com.example.chai.cocktails.interfaces.ListingService;
-import com.example.chai.cocktails.models.DrinkDetail;
-import com.example.chai.cocktails.models.DrinkDetailListing;
+import com.example.chai.cocktails.models.pojos.DrinkDetail;
+import com.example.chai.cocktails.models.wrapperpojos.DrinkDetailListing;
 import com.example.chai.cocktails.utils.Constants;
 
 import java.util.List;
