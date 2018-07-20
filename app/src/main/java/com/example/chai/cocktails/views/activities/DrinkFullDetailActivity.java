@@ -5,34 +5,22 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.example.chai.cocktails.R;
-import com.example.chai.cocktails.interfaces.ListingService;
-import com.example.chai.cocktails.models.DrinkDetail;
 import com.example.chai.cocktails.models.DrinkFullDetail;
-import com.example.chai.cocktails.models.DrinkFullDetailWrapper;
-import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.utils.GlideApp;
-import com.example.chai.cocktails.viewmodels.DrinkDetailListingViewModel;
 import com.example.chai.cocktails.viewmodels.DrinkFullDetailViewModel;
-
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DrinkFullDetailActivity extends AppCompatActivity {
 
-  //  DrinkFullDetail drink;
+    //  DrinkFullDetail drink;
     DrinkFullDetailViewModel viewModel;
 
     @BindView(R.id.fullDetailImage)
@@ -74,7 +62,7 @@ public class DrinkFullDetailActivity extends AppCompatActivity {
         viewModel.drinkObservable.observe(this, new Observer<DrinkFullDetail>() {
             @Override
             public void onChanged(@Nullable DrinkFullDetail drink) {
-               loadData(drink);
+                loadData(drink);
             }
         });
     }
@@ -95,7 +83,7 @@ public class DrinkFullDetailActivity extends AppCompatActivity {
     }
 
 
-    private void showLogo(String url, ImageView imageView){
+    private void showLogo(String url, ImageView imageView) {
         GlideApp
                 .with(this)
                 .load(url)
@@ -104,7 +92,6 @@ public class DrinkFullDetailActivity extends AppCompatActivity {
                 .placeholder(R.drawable.ic_launcher_background)
                 .into(imageView);
     }
-
 
 
 }

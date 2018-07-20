@@ -33,6 +33,7 @@ public class IngredientFragment extends Fragment {
     RecyclerView categoryList;
     private OnFragmentInteractionListener mListener;
     private List<Drink> categories;
+
     public IngredientFragment() {
     }
 

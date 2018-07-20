@@ -17,7 +17,6 @@ import com.example.chai.cocktails.models.DrinkDetail;
 import com.example.chai.cocktails.utils.GlideApp;
 import com.example.chai.cocktails.views.activities.DrinkFullDetailActivity;
 
-
 import java.util.List;
 
 import butterknife.BindView;
@@ -49,7 +48,7 @@ public class DrinkDetailListAdapter extends RecyclerView.Adapter<DrinkDetailList
     }
 
 
-    private void showLogo(String url, ImageView imageView){
+    private void showLogo(String url, ImageView imageView) {
         GlideApp
                 .with(context)
                 .load(url)

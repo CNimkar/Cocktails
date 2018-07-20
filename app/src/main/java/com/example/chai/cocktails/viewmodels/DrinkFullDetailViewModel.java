@@ -1,11 +1,8 @@
 package com.example.chai.cocktails.viewmodels;
 
 import android.app.Activity;
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.example.chai.cocktails.interfaces.ListingService;
@@ -13,28 +10,25 @@ import com.example.chai.cocktails.models.DrinkFullDetail;
 import com.example.chai.cocktails.models.DrinkFullDetailWrapper;
 import com.example.chai.cocktails.utils.Constants;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DrinkFullDetailViewModel extends ViewModel {
 
-    String id;
     public MutableLiveData<DrinkFullDetail> drinkObservable;
-
-    public void fetchId(Activity activity){
-        if (activity.getIntent() != null) {
-            id = activity.getIntent().getStringExtra("id");
-        }
-    }
+    String id;
 
     public DrinkFullDetailViewModel() {
         drinkObservable = new MutableLiveData<>();
         getData();
     }
 
+    public void fetchId(Activity activity) {
+        if (activity.getIntent() != null) {
+            id = activity.getIntent().getStringExtra("id");
+        }
+    }
 
     public void getData() {
         ListingService webService =
