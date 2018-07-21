@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.example.chai.cocktails.R;
+import com.example.chai.cocktails.models.apiresponsewrappers.DrinkFullDetailsAPIResponse;
 import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
 import com.example.chai.cocktails.utils.GlideApp;
 import com.example.chai.cocktails.viewmodels.DrinkFullDetailViewModel;
@@ -22,6 +24,8 @@ public class DrinkFullDetailActivity extends AppCompatActivity {
 
     //  DrinkFullDetail drink;
     DrinkFullDetailViewModel viewModel;
+    String id;
+
 
     @BindView(R.id.fullDetailImage)
     ImageView fullDetailImage;
@@ -53,19 +57,40 @@ public class DrinkFullDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         viewModel = ViewModelProviders.of(this)
                 .get(DrinkFullDetailViewModel.class);
-        viewModel.fetchId(this);
+        if (getIntent() != null) {
+            id = getIntent().getStringExtra("id");
+        }
         initViewModel();
-        viewModel.getData();
     }
 
     private void initViewModel() {
-        viewModel.drinkObservable.observe(this, new Observer<DrinkFullDetail>() {
-            @Override
-            public void onChanged(@Nullable DrinkFullDetail drink) {
-                loadData(drink);
-            }
-        });
+        if (id != null) {
+            viewModel.getApiResponse(id).observe(this,
+                    new Observer<DrinkFullDetailsAPIResponse>() {
+                        @Override
+                        public void onChanged(@Nullable DrinkFullDetailsAPIResponse
+                                                      drinkFullDetailsAPIResponse) {
+                            switch (drinkFullDetailsAPIResponse.
+                                    getResponseType()) {
+                                case DrinkFullDetailsAPIResponse.SUCCESSFUL_RESPONSE:
+                                    loadData(drinkFullDetailsAPIResponse.getDrink());
+                                    break;
+                                case DrinkFullDetailsAPIResponse.REQUEST_ERROR_RESPONSE:
+                                case DrinkFullDetailsAPIResponse.THROWABLE_ERROR_RESPONSE:
+                                    displayNetworkingErrorToast();
+                            }
+                        }
+                    });
+        }
+
     }
+
+    private void displayNetworkingErrorToast() {
+        Toast.makeText(this,
+                "Unable to get details",
+                Toast.LENGTH_LONG).show();
+    }
+
 
     private void loadData(DrinkFullDetail drink) {
         showLogo(drink.getThumbnail(), fullDetailImage);
