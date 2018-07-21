@@ -57,13 +57,17 @@ public class DrinkFullDetailActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         viewModel = ViewModelProviders.of(this)
                 .get(DrinkFullDetailViewModel.class);
+        fetchId();
+        subscribeToResponseObserver();
+    }
+
+    private void fetchId() {
         if (getIntent() != null) {
             id = getIntent().getStringExtra("id");
         }
-        initViewModel();
     }
 
-    private void initViewModel() {
+    private void subscribeToResponseObserver() {
         if (id != null) {
             viewModel.getApiResponse(id).observe(this,
                     new Observer<DrinkFullDetailsAPIResponse>() {

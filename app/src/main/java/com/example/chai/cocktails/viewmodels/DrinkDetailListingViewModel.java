@@ -21,24 +21,19 @@ public class DrinkDetailListingViewModel extends ViewModel {
 
     }
 
-    public LiveData<DrinkListingAPIResonse> getApiResponse() {
+    public LiveData<DrinkListingAPIResonse> getApiResponse(String type, String name) {
         if (drinksListingObservable.getValue() == null ||
                 drinksListingObservable.getValue().getResponseType()
                         != DrinkListingAPIResonse.SUCCESSFUL_RESPONSE) {
-            getData();
+            getData(type, name);
         }
 
         return drinksListingObservable;
     }
 
-    public void fetchUrlDetails(Activity activity) {
-        if (activity.getIntent() != null) {
-            type = activity.getIntent().getStringExtra("type");
-            name = activity.getIntent().getStringExtra("categoryName");
-        }
-    }
 
-    public void getData() {
+
+    public void getData(String type, String name) {
         drinksListingObservable = repository.getData(type, name);
     }
 }

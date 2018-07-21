@@ -30,6 +30,9 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
     DrinkDetailListingViewModel viewModel;
     DrinkDetailListAdapter adapter;
 
+    String type;
+    String name;
+
     List<DrinkDetail> drinksList;
 
     @Override
@@ -43,13 +46,19 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this)
                 .get(DrinkDetailListingViewModel.class);
 
-        viewModel.fetchUrlDetails(this);
+        fetchUrlDetails();
         drinksList = new ArrayList<>();
         initAdapterWithNoData();
         subscribeToResponseObserver();
-        viewModel.getData();
 
 
+    }
+
+    public void fetchUrlDetails() {
+        if (getIntent() != null) {
+            type = getIntent().getStringExtra("type");
+            name = getIntent().getStringExtra("categoryName");
+        }
     }
 
     private void initAdapterWithNoData() {
@@ -68,19 +77,22 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
     }
 
     private void subscribeToResponseObserver() {
-        viewModel.getApiResponse().observe(this, new Observer<DrinkListingAPIResonse>() {
-            @Override
-            public void onChanged(@Nullable DrinkListingAPIResonse drinkListingAPIResponse) {
-                switch (drinkListingAPIResponse.getResponseType()) {
-                    case NameListingAPIResponse.SUCCESSFUL_RESPONSE:
-                        loadDataWithSubscription(drinkListingAPIResponse.getDrinks());
-                        break;
-                    case NameListingAPIResponse.REQUEST_ERROR_RESPONSE:
-                    case NameListingAPIResponse.THROWABLE_ERROR_RESPONSE:
-                        displayNetworkingErrorToast();
+        if(type != null && name != null){
+            viewModel.getApiResponse(type,name).observe(this, new Observer<DrinkListingAPIResonse>() {
+                @Override
+                public void onChanged(@Nullable DrinkListingAPIResonse drinkListingAPIResponse) {
+                    switch (drinkListingAPIResponse.getResponseType()) {
+                        case NameListingAPIResponse.SUCCESSFUL_RESPONSE:
+                            loadDataWithSubscription(drinkListingAPIResponse.getDrinks());
+                            break;
+                        case NameListingAPIResponse.REQUEST_ERROR_RESPONSE:
+                        case NameListingAPIResponse.THROWABLE_ERROR_RESPONSE:
+                            displayNetworkingErrorToast();
+                    }
                 }
-            }
-        });
+            });
+        }
+
     }
 
     private void displayNetworkingErrorToast() {
