@@ -8,7 +8,7 @@ public class NameListingAPIResponse {
     public static final int SUCCESSFUL_RESPONSE = 100;
     public static final int REQUEST_ERROR_RESPONSE = 101;
     public static final int THROWABLE_ERROR_RESPONSE = 102;
-    //Possible response types
+
     private List<Drink> drinks;
     private int requestError = 0;
     private Throwable error;
