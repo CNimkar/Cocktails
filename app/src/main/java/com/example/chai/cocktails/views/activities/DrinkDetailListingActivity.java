@@ -41,8 +41,6 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_drink_detail_listing);
         getSupportActionBar().hide();
         ButterKnife.bind(this);
-
-
         viewModel = ViewModelProviders.of(this)
                 .get(DrinkDetailListingViewModel.class);
 
@@ -50,8 +48,6 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
         drinksList = new ArrayList<>();
         initAdapterWithNoData();
         subscribeToResponseObserver();
-
-
     }
 
     public void fetchUrlDetails() {
@@ -77,8 +73,8 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
     }
 
     private void subscribeToResponseObserver() {
-        if(type != null && name != null){
-            viewModel.getApiResponse(type,name).observe(this, new Observer<DrinkListingAPIResonse>() {
+        if (type != null && name != null) {
+            viewModel.getApiResponse(type, name).observe(this, new Observer<DrinkListingAPIResonse>() {
                 @Override
                 public void onChanged(@Nullable DrinkListingAPIResonse drinkListingAPIResponse) {
                     switch (drinkListingAPIResponse.getResponseType()) {

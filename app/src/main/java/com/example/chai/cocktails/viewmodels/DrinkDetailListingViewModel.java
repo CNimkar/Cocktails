@@ -1,6 +1,5 @@
 package com.example.chai.cocktails.viewmodels;
 
-import android.app.Activity;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
@@ -30,7 +29,6 @@ public class DrinkDetailListingViewModel extends ViewModel {
 
         return drinksListingObservable;
     }
-
 
 
     public void getData(String type, String name) {

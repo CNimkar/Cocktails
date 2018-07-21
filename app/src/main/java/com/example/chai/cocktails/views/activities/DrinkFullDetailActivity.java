@@ -22,7 +22,6 @@ import butterknife.ButterKnife;
 
 public class DrinkFullDetailActivity extends AppCompatActivity {
 
-    //  DrinkFullDetail drink;
     DrinkFullDetailViewModel viewModel;
     String id;
 
