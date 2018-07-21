@@ -1,5 +1,6 @@
 package com.example.chai.cocktails.viewmodels;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
@@ -14,6 +15,15 @@ public class MainViewModel extends ViewModel {
 
     public MainViewModel() {
         nameListingAPIResponse = new MutableLiveData<>();
+    }
+
+    public LiveData<NameListingAPIResponse> getApiResponse(String filter) {
+        if (nameListingAPIResponse.getValue() == null ||
+                nameListingAPIResponse.getValue().getResponseType()
+                        != NameListingAPIResponse.SUCCESSFUL_RESPONSE) {
+            getData(filter);
+        }
+        return nameListingAPIResponse;
     }
 
     public void getData(String filter) {

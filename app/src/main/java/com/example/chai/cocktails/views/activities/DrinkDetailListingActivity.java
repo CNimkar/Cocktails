@@ -7,9 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.adapters.DrinkDetailListAdapter;
+import com.example.chai.cocktails.models.apiresponsewrappers.DrinkListingAPIResonse;
+import com.example.chai.cocktails.models.apiresponsewrappers.NameListingAPIResponse;
 import com.example.chai.cocktails.models.pojos.DrinkDetail;
 import com.example.chai.cocktails.viewmodels.DrinkDetailListingViewModel;
 
@@ -42,35 +45,48 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
 
         viewModel.fetchUrlDetails(this);
         drinksList = new ArrayList<>();
-        loadData();
-        initViewModel();
+        initAdapterWithNoData();
+        subscribeToResponseObserver();
         viewModel.getData();
 
 
     }
 
-    private void initViewModel() {
-        viewModel.drinksObservable.observe(this, new Observer<List<DrinkDetail>>() {
-            @Override
-            public void onChanged(@Nullable List<DrinkDetail> drinks) {
-                drinksList.clear();
-                drinksList.addAll(drinks);
-                if (adapter == null) {
-                    loadData();
-                } else {
-                    adapter.notifyDataSetChanged();
-                }
-            }
-        });
-    }
-
-    private void loadData() {
+    private void initAdapterWithNoData() {
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(this);
         detailedList.setLayoutManager(layoutManager);
         adapter =
                 new DrinkDetailListAdapter(drinksList, this);
         detailedList.setAdapter(adapter);
+    }
+
+    private void loadDataWithSubscription(List<DrinkDetail> categories) {
+        drinksList.clear();
+        drinksList.addAll(categories);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void subscribeToResponseObserver() {
+        viewModel.getApiResponse().observe(this, new Observer<DrinkListingAPIResonse>() {
+            @Override
+            public void onChanged(@Nullable DrinkListingAPIResonse drinkListingAPIResponse) {
+                switch (drinkListingAPIResponse.getResponseType()) {
+                    case NameListingAPIResponse.SUCCESSFUL_RESPONSE:
+                        loadDataWithSubscription(drinkListingAPIResponse.getDrinks());
+                        break;
+                    case NameListingAPIResponse.REQUEST_ERROR_RESPONSE:
+                    case NameListingAPIResponse.THROWABLE_ERROR_RESPONSE:
+                        displayNetworkingErrorToast();
+                }
+            }
+        });
+    }
+
+    private void displayNetworkingErrorToast() {
+        Toast.makeText(this,
+                "Unable to get the list",
+                Toast.LENGTH_LONG).show();
     }
 
 

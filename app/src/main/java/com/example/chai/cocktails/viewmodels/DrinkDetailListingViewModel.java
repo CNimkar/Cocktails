@@ -1,29 +1,34 @@
 package com.example.chai.cocktails.viewmodels;
 
 import android.app.Activity;
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.util.Log;
 
-import com.example.chai.cocktails.interfaces.ListingService;
-import com.example.chai.cocktails.models.pojos.DrinkDetail;
-import com.example.chai.cocktails.models.wrapperpojos.DrinkDetailListing;
-import com.example.chai.cocktails.utils.Constants;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import com.example.chai.cocktails.models.apiresponsewrappers.DrinkListingAPIResonse;
+import com.example.chai.cocktails.repository.CocktailRepository;
 
 public class DrinkDetailListingViewModel extends ViewModel {
 
-    public MutableLiveData<List<DrinkDetail>> drinksObservable;
+    public MutableLiveData<DrinkListingAPIResonse> drinksListingObservable;
     String type;
     String name;
+    CocktailRepository repository = CocktailRepository.getInstance();
 
     public DrinkDetailListingViewModel() {
-        drinksObservable = new MutableLiveData<>();
+        drinksListingObservable = new MutableLiveData<>();
+
+
+    }
+
+    public LiveData<DrinkListingAPIResonse> getApiResponse() {
+        if (drinksListingObservable.getValue() == null ||
+                drinksListingObservable.getValue().getResponseType()
+                        != DrinkListingAPIResonse.SUCCESSFUL_RESPONSE) {
+            getData();
+        }
+
+        return drinksListingObservable;
     }
 
     public void fetchUrlDetails(Activity activity) {
@@ -34,27 +39,6 @@ public class DrinkDetailListingViewModel extends ViewModel {
     }
 
     public void getData() {
-        ListingService webService =
-                ListingService.retrofit.create(ListingService.class);
-        Log.d("Testing",Constants.getUrlByFilterAndName(type, name));
-        Call<DrinkDetailListing> call = webService.filterByMentioned(Constants.getUrlByFilterAndName(type, name));
-        call.enqueue(new Callback<DrinkDetailListing>() {
-            @Override
-            public void onResponse(Call<DrinkDetailListing> call, Response<DrinkDetailListing> response) {
-                if (response.isSuccessful()) {
-                    drinksObservable.postValue(response.body().getDrinks());
-                } else {
-                    Log.d("MainActivity", "Response empty");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DrinkDetailListing> call, Throwable t) {
-                Log.d("error", "" + call);
-            }
-
-
-        });
-
+        drinksListingObservable = repository.getData(type, name);
     }
 }
