@@ -2,8 +2,11 @@ package com.example.chai.cocktails.repository;
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule;
 
+import com.example.chai.cocktails.models.apiResponseWrappers.DrinkFullDetailsAPIResponse;
 import com.example.chai.cocktails.models.apiResponseWrappers.DrinkListingAPIResponse;
 import com.example.chai.cocktails.models.apiResponseWrappers.NameListingAPIResponse;
+import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
+import com.example.chai.cocktails.testUtils.DrinkProviderTestUtil;
 import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.testUtils.LiveDataTestUtil;
 
@@ -20,6 +23,7 @@ import static org.junit.Assert.*;
 public class CocktailRepositoryTest {
 
     CocktailRepository repository;
+    LiveDataTestUtil util;
 
     @Before
     public void initRep(){
@@ -29,6 +33,11 @@ public class CocktailRepositoryTest {
     @After
     public void remRep(){
         repository = null;
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Rule
@@ -95,8 +104,8 @@ public class CocktailRepositoryTest {
 
         try {
             DrinkListingAPIResponse ingredientResponse =  LiveDataTestUtil.getValue(
-                    repository.getData(Constants.FILTER_INGREDIENTS, "Port"));
-            assertEquals( 4, ingredientResponse.getDrinks().size());
+                    repository.getData(Constants.FILTER_INGREDIENTS, "Apple brandy"));
+            assertEquals( 2, ingredientResponse.getDrinks().size());
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -111,6 +120,27 @@ public class CocktailRepositoryTest {
                     repository.getData(Constants.FILTER_GLASS, "Champagne flute"));
 
             assertEquals(13, glassResponse.getDrinks().size());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void getDataFullDetails(){
+        DrinkFullDetailsAPIResponse glassResponse = null;
+        try {
+            glassResponse = LiveDataTestUtil.getValue(
+                    repository.getDataFullDetails("15346"));
+
+            DrinkFullDetail drink  = glassResponse.getDrink();
+            DrinkFullDetail testDrink = DrinkProviderTestUtil.createTestDrink();
+
+            assertEquals(testDrink.getName(), drink.getName());
+            assertEquals(testDrink.getCategory(), drink.getCategory());
+            assertEquals(testDrink.getGlassType(), drink.getGlassType());
+            assertEquals(testDrink.getAlcoholic(), drink.getAlcoholic());
+            assertEquals(testDrink.getInstructions(), drink.getInstructions());
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

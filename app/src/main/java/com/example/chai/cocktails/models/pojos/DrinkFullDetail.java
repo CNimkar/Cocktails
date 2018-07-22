@@ -11,117 +11,84 @@ public class DrinkFullDetail {
 
     @SerializedName("strVideo")
     String videoLink;
-
     @SerializedName("strCategory")
-    String category;
 
+    String category;
     @SerializedName("strIBA")
     String IBA;
-
     @SerializedName("strAlcoholic")
     String alcoholic;
-
     @SerializedName("strGlass")
     String glassType;
-
     @SerializedName("strInstructions")
     String instructions;
-
     @SerializedName("strDrinkThumb")
     String thumbnail;
-
     @SerializedName("strIngredient1")
     String ingredient1;
-
     @SerializedName("strIngredient2")
     String ingredient2;
-
     @SerializedName("strIngredient3")
     String ingredient3;
-
     @SerializedName("strIngredient4")
     String ingredient4;
-
     @SerializedName("strIngredient5")
     String ingredient5;
-
     @SerializedName("strIngredient6")
     String ingredient6;
-
     @SerializedName("strIngredient7")
     String ingredient7;
-
     @SerializedName("strIngredient8")
     String ingredient8;
-
     @SerializedName("strIngredient9")
     String ingredient9;
-
     @SerializedName("strIngredient10")
     String ingredient10;
-
     @SerializedName("strIngredient11")
     String ingredient11;
-
     @SerializedName("strIngredient12")
     String ingredient12;
-
     @SerializedName("strIngredient13")
     String ingredient13;
-
     @SerializedName("strIngredient14")
     String ingredient14;
-
     @SerializedName("strIngredient15")
     String ingredient15;
-
     @SerializedName("strMeasure1")
     String measure1;
-
     @SerializedName("strMeasure2")
     String measure2;
-
     @SerializedName("strMeasure3")
     String measure3;
-
     @SerializedName("strMeasure4")
     String measure4;
-
     @SerializedName("strMeasure5")
     String measure5;
-
     @SerializedName("strMeasure6")
     String measure6;
-
     @SerializedName("strMeasure7")
     String measure7;
-
     @SerializedName("strMeasure8")
     String measure8;
-
     @SerializedName("strMeasure9")
     String measure9;
-
     @SerializedName("strMeasure10")
     String measure10;
-
     @SerializedName("strMeasure11")
     String measure11;
-
     @SerializedName("strMeasure12")
     String measure12;
-
     @SerializedName("strMeasure13")
     String measure13;
-
     @SerializedName("strMeasure14")
     String measure14;
-
     @SerializedName("strMeasure15")
     String measure15;
-
     @SerializedName("dateModified")
     String dateModified;
+
+    public DrinkFullDetail() {
+    }
 
     public DrinkFullDetail(int id, String name, String videoLink, String category, String IBA, String alcoholic, String glassType, String instructions, String thumbnail, String ingredient1, String ingredient2, String ingredient3, String ingredient4, String ingredient5, String ingredient6, String ingredient7, String ingredient8, String ingredient9, String ingredient10, String ingredient11, String ingredient12, String ingredient13, String ingredient14, String ingredient15, String measure1, String measure2, String measure3, String measure4, String measure5, String measure6, String measure7, String measure8, String measure9, String measure10, String measure11, String measure12, String measure13, String measure14, String measure15, String dateModified) {
         this.id = id;
