@@ -1,4 +1,4 @@
-package com.example.chai.cocktails.viewmodels;
+package com.example.chai.cocktails.viewModels;
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule;
 import android.arch.lifecycle.MutableLiveData;
