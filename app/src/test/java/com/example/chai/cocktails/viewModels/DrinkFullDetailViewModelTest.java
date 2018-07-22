@@ -5,9 +5,7 @@ import android.arch.lifecycle.MutableLiveData;
 
 import com.example.chai.cocktails.models.apiResponseWrappers.DrinkFullDetailsAPIResponse;
 import com.example.chai.cocktails.models.apiResponseWrappers.DrinkListingAPIResponse;
-import com.example.chai.cocktails.models.pojos.DrinkDetail;
 import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
-import com.example.chai.cocktails.utils.Constants;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -15,9 +13,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
