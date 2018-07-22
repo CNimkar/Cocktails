@@ -3,12 +3,12 @@ package com.example.chai.cocktails.repository;
 import android.arch.lifecycle.MutableLiveData;
 
 import com.example.chai.cocktails.interfaces.ListingService;
-import com.example.chai.cocktails.models.apiresponsewrappers.DrinkFullDetailsAPIResponse;
-import com.example.chai.cocktails.models.apiresponsewrappers.DrinkListingAPIResonse;
-import com.example.chai.cocktails.models.apiresponsewrappers.NameListingAPIResponse;
-import com.example.chai.cocktails.models.wrapperpojos.DrinkDetailListing;
-import com.example.chai.cocktails.models.wrapperpojos.DrinkFullDetailWrapper;
-import com.example.chai.cocktails.models.wrapperpojos.DrinkListing;
+import com.example.chai.cocktails.models.apiResponseWrappers.DrinkFullDetailsAPIResponse;
+import com.example.chai.cocktails.models.apiResponseWrappers.DrinkListingAPIResponse;
+import com.example.chai.cocktails.models.apiResponseWrappers.NameListingAPIResponse;
+import com.example.chai.cocktails.models.wrapperPojos.DrinkDetailListing;
+import com.example.chai.cocktails.models.wrapperPojos.DrinkFullDetailWrapper;
+import com.example.chai.cocktails.models.wrapperPojos.DrinkListing;
 import com.example.chai.cocktails.utils.Constants;
 
 import retrofit2.Call;
@@ -22,7 +22,7 @@ public class CocktailRepository {
 
     private MutableLiveData<NameListingAPIResponse> nameListingApiResponse
             = new MutableLiveData<>();
-    private MutableLiveData<DrinkListingAPIResonse> drinkListingAPIResonse
+    private MutableLiveData<DrinkListingAPIResponse> drinkListingAPIResonse
             = new MutableLiveData<>();
     private MutableLiveData<DrinkFullDetailsAPIResponse> drinkFullDetailsAPIResponse
             = new MutableLiveData<>();
@@ -85,7 +85,7 @@ public class CocktailRepository {
     }
 
 
-    public MutableLiveData<DrinkListingAPIResonse> getData(String type, String name) {
+    public MutableLiveData<DrinkListingAPIResponse> getData(String type, String name) {
         ListingService webService =
                 ListingService.retrofit.create(ListingService.class);
         Call<DrinkDetailListing> call = webService.filterByMentioned(
@@ -96,16 +96,16 @@ public class CocktailRepository {
                                    Response<DrinkDetailListing> response) {
                 if (response.isSuccessful()) {
                     drinkListingAPIResonse.postValue(
-                            new DrinkListingAPIResonse(response.body().getDrinks()));
+                            new DrinkListingAPIResponse(response.body().getDrinks()));
                 } else {
                     int responseCode = response.code();
-                    drinkListingAPIResonse.postValue(new DrinkListingAPIResonse(responseCode));
+                    drinkListingAPIResonse.postValue(new DrinkListingAPIResponse(responseCode));
                 }
             }
 
             @Override
             public void onFailure(Call<DrinkDetailListing> call, Throwable t) {
-                drinkListingAPIResonse.postValue(new DrinkListingAPIResonse(t));
+                drinkListingAPIResonse.postValue(new DrinkListingAPIResponse(t));
             }
 
 

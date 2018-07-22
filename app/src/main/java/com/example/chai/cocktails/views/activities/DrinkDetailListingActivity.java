@@ -11,10 +11,10 @@ import android.widget.Toast;
 
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.adapters.DrinkDetailListAdapter;
-import com.example.chai.cocktails.models.apiresponsewrappers.DrinkListingAPIResonse;
-import com.example.chai.cocktails.models.apiresponsewrappers.NameListingAPIResponse;
+import com.example.chai.cocktails.models.apiResponseWrappers.DrinkListingAPIResponse;
+import com.example.chai.cocktails.models.apiResponseWrappers.NameListingAPIResponse;
 import com.example.chai.cocktails.models.pojos.DrinkDetail;
-import com.example.chai.cocktails.viewmodels.DrinkDetailListingViewModel;
+import com.example.chai.cocktails.viewModels.DrinkDetailListingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,9 +74,9 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
 
     private void subscribeToResponseObserver() {
         if (type != null && name != null) {
-            viewModel.getApiResponse(type, name).observe(this, new Observer<DrinkListingAPIResonse>() {
+            viewModel.getApiResponse(type, name).observe(this, new Observer<DrinkListingAPIResponse>() {
                 @Override
-                public void onChanged(@Nullable DrinkListingAPIResonse drinkListingAPIResponse) {
+                public void onChanged(@Nullable DrinkListingAPIResponse drinkListingAPIResponse) {
                     switch (drinkListingAPIResponse.getResponseType()) {
                         case NameListingAPIResponse.SUCCESSFUL_RESPONSE:
                             loadDataWithSubscription(drinkListingAPIResponse.getDrinks());

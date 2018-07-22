@@ -16,10 +16,10 @@ import android.widget.Toast;
 
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.adapters.CategoryListAdapter;
-import com.example.chai.cocktails.models.apiresponsewrappers.NameListingAPIResponse;
+import com.example.chai.cocktails.models.apiResponseWrappers.NameListingAPIResponse;
 import com.example.chai.cocktails.models.pojos.Drink;
 import com.example.chai.cocktails.utils.Constants;
-import com.example.chai.cocktails.viewmodels.MainViewModel;
+import com.example.chai.cocktails.viewModels.MainViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

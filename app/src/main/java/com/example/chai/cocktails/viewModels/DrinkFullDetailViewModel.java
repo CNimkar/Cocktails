@@ -1,10 +1,10 @@
-package com.example.chai.cocktails.viewmodels;
+package com.example.chai.cocktails.viewModels;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.example.chai.cocktails.models.apiresponsewrappers.DrinkFullDetailsAPIResponse;
+import com.example.chai.cocktails.models.apiResponseWrappers.DrinkFullDetailsAPIResponse;
 import com.example.chai.cocktails.repository.CocktailRepository;
 
 public class DrinkFullDetailViewModel extends ViewModel {

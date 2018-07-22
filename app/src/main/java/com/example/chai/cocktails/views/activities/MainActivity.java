@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.chai.cocktails.R;
-import com.example.chai.cocktails.viewmodels.MainViewModel;
+import com.example.chai.cocktails.viewModels.MainViewModel;
 import com.example.chai.cocktails.views.fragments.CategoriesFragment;
 import com.example.chai.cocktails.views.fragments.GlassesFragment;
 import com.example.chai.cocktails.views.fragments.IngredientFragment;

@@ -1,4 +1,4 @@
-package com.example.chai.cocktails.models.wrapperpojos;
+package com.example.chai.cocktails.models.wrapperPojos;
 
 import com.example.chai.cocktails.models.pojos.Drink;
 

@@ -1,15 +1,15 @@
-package com.example.chai.cocktails.viewmodels;
+package com.example.chai.cocktails.viewModels;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 
-import com.example.chai.cocktails.models.apiresponsewrappers.DrinkListingAPIResonse;
+import com.example.chai.cocktails.models.apiResponseWrappers.DrinkListingAPIResponse;
 import com.example.chai.cocktails.repository.CocktailRepository;
 
 public class DrinkDetailListingViewModel extends ViewModel {
 
-    public MutableLiveData<DrinkListingAPIResonse> drinksListingObservable;
+    public MutableLiveData<DrinkListingAPIResponse> drinksListingObservable;
     String type;
     String name;
     CocktailRepository repository = CocktailRepository.getInstance();
@@ -20,10 +20,10 @@ public class DrinkDetailListingViewModel extends ViewModel {
 
     }
 
-    public LiveData<DrinkListingAPIResonse> getApiResponse(String type, String name) {
+    public LiveData<DrinkListingAPIResponse> getApiResponse(String type, String name) {
         if (drinksListingObservable.getValue() == null ||
                 drinksListingObservable.getValue().getResponseType()
-                        != DrinkListingAPIResonse.SUCCESSFUL_RESPONSE) {
+                        != DrinkListingAPIResponse.SUCCESSFUL_RESPONSE) {
             getData(type, name);
         }
 

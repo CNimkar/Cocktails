@@ -1,46 +1,43 @@
-package com.example.chai.cocktails.models.apiresponsewrappers;
+package com.example.chai.cocktails.models.apiResponseWrappers;
 
-import com.example.chai.cocktails.models.pojos.DrinkDetail;
+import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
 
-import java.util.List;
-
-public class DrinkListingAPIResonse {
-
+public class DrinkFullDetailsAPIResponse {
     public static final int SUCCESSFUL_RESPONSE = 100;
     public static final int REQUEST_ERROR_RESPONSE = 101;
     public static final int THROWABLE_ERROR_RESPONSE = 102;
 
-    private List<DrinkDetail> drinks;
+    private DrinkFullDetail drink;
     private int requestError = 0;
     private Throwable error;
     private int responseType;
 
-    public DrinkListingAPIResonse(List<DrinkDetail> drinks) {
+
+    public DrinkFullDetailsAPIResponse(DrinkFullDetail drink) {
         setResponseType(SUCCESSFUL_RESPONSE);
-        this.drinks = drinks;
+        this.drink = drink;
         this.error = null;
     }
 
-    public DrinkListingAPIResonse(int requestError) {
+    public DrinkFullDetailsAPIResponse(int requestError) {
         setResponseType(REQUEST_ERROR_RESPONSE);
         this.requestError = requestError;
         this.error = null;
-        this.drinks = null;
+        this.drink = null;
     }
 
-    public DrinkListingAPIResonse(Throwable error) {
+    public DrinkFullDetailsAPIResponse(Throwable error) {
         setResponseType(THROWABLE_ERROR_RESPONSE);
         this.error = error;
-        this.drinks = null;
+        this.drink = null;
     }
 
-
-    public List<DrinkDetail> getDrinks() {
-        return drinks;
+    public DrinkFullDetail getDrink() {
+        return drink;
     }
 
-    public void setDrinks(List<DrinkDetail> drinks) {
-        this.drinks = drinks;
+    public void setDrink(DrinkFullDetail drink) {
+        this.drink = drink;
     }
 
     public int getRequestError() {

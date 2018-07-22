@@ -12,10 +12,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.request.RequestOptions;
 import com.example.chai.cocktails.R;
-import com.example.chai.cocktails.models.apiresponsewrappers.DrinkFullDetailsAPIResponse;
+import com.example.chai.cocktails.models.apiResponseWrappers.DrinkFullDetailsAPIResponse;
 import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
 import com.example.chai.cocktails.utils.GlideApp;
-import com.example.chai.cocktails.viewmodels.DrinkFullDetailViewModel;
+import com.example.chai.cocktails.viewModels.DrinkFullDetailViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

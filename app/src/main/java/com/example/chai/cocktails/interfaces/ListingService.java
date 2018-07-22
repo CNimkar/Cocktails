@@ -1,8 +1,8 @@
 package com.example.chai.cocktails.interfaces;
 
-import com.example.chai.cocktails.models.wrapperpojos.DrinkDetailListing;
-import com.example.chai.cocktails.models.wrapperpojos.DrinkFullDetailWrapper;
-import com.example.chai.cocktails.models.wrapperpojos.DrinkListing;
+import com.example.chai.cocktails.models.wrapperPojos.DrinkDetailListing;
+import com.example.chai.cocktails.models.wrapperPojos.DrinkFullDetailWrapper;
+import com.example.chai.cocktails.models.wrapperPojos.DrinkListing;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
