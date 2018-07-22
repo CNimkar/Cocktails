@@ -35,7 +35,6 @@ public class CocktailRepositoryTest {
 
     @Test
     public void getInstance() {
-        repository = CocktailRepository.getInstance();
         assertNotNull(repository);
     }
 
