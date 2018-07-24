@@ -11,7 +11,6 @@ public class Constants {
     public static final String CATEGORY_NAME = "categoryName";
     public static final String TYPE = "type";
     public static final String ID = "id";
-    //https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=13060
 
     public static String getUrlByFilterAndName(String filter, String name) {
         return BASE_URL + filter + name;
