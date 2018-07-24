@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.models.apiResponseWrappers.DrinkFullDetailsAPIResponse;
 import com.example.chai.cocktails.models.pojos.DrinkFullDetail;
+import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.utils.GlideApp;
 import com.example.chai.cocktails.viewModels.DrinkFullDetailViewModel;
 
@@ -62,7 +63,7 @@ public class DrinkFullDetailActivity extends AppCompatActivity {
 
     private void fetchId() {
         if (getIntent() != null) {
-            id = getIntent().getStringExtra("id");
+            id = getIntent().getStringExtra(Constants.ID);
         }
     }
 

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.models.pojos.DrinkDetail;
+import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.utils.GlideApp;
 import com.example.chai.cocktails.views.activities.DrinkFullDetailActivity;
 
@@ -81,7 +82,7 @@ public class DrinkDetailListAdapter extends RecyclerView.Adapter<DrinkDetailList
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DrinkFullDetailActivity.class);
-                    intent.putExtra("id", drinks.get(getAdapterPosition()).getIdDrink());
+                    intent.putExtra(Constants.ID, drinks.get(getAdapterPosition()).getIdDrink());
                     context.startActivity(intent);
                 }
             });

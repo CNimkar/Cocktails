@@ -14,6 +14,7 @@ import com.example.chai.cocktails.adapters.DrinkDetailListAdapter;
 import com.example.chai.cocktails.models.apiResponseWrappers.DrinkListingAPIResponse;
 import com.example.chai.cocktails.models.apiResponseWrappers.NameListingAPIResponse;
 import com.example.chai.cocktails.models.pojos.DrinkDetail;
+import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.viewModels.DrinkDetailListingViewModel;
 
 import java.util.ArrayList;
@@ -52,8 +53,8 @@ public class DrinkDetailListingActivity extends AppCompatActivity {
 
     public void fetchUrlDetails() {
         if (getIntent() != null) {
-            type = getIntent().getStringExtra("type");
-            name = getIntent().getStringExtra("categoryName");
+            type = getIntent().getStringExtra(Constants.TYPE);
+            name = getIntent().getStringExtra(Constants.CATEGORY_NAME);
         }
     }
 

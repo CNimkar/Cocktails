@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.chai.cocktails.R;
 import com.example.chai.cocktails.models.pojos.Drink;
+import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.views.activities.DrinkDetailListingActivity;
 
 import java.util.List;
@@ -66,8 +67,8 @@ public class CategoryListAdapter extends
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DrinkDetailListingActivity.class);
-                    intent.putExtra("categoryName", categories.get(getAdapterPosition()).getCategory());
-                    intent.putExtra("type", type);
+                    intent.putExtra(Constants.CATEGORY_NAME, categories.get(getAdapterPosition()).getCategory());
+                    intent.putExtra(Constants.TYPE, type);
                     context.startActivity(intent);
                 }
             });
