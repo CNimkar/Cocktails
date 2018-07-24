@@ -23,14 +23,14 @@ public class CocktailRepositoryTest {
 
     CocktailRepository repository;
 
-    @Before
-    public void initRep(){
-        repository = CocktailRepository.createNewInstance();
-    }
 
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
 
+    @Before
+    public void initRep(){
+        repository = CocktailRepository.createNewInstance();
+    }
 
     @Test
     public void getInstance() {

@@ -22,7 +22,7 @@ public class CocktailRepository {
 
     private MutableLiveData<NameListingAPIResponse> nameListingApiResponse
             = new MutableLiveData<>();
-    private MutableLiveData<DrinkListingAPIResponse> drinkListingAPIResonse
+    private MutableLiveData<DrinkListingAPIResponse> drinkListingAPIResponse
             = new MutableLiveData<>();
     private MutableLiveData<DrinkFullDetailsAPIResponse> drinkFullDetailsAPIResponse
             = new MutableLiveData<>();
@@ -100,23 +100,23 @@ public class CocktailRepository {
             public void onResponse(Call<DrinkDetailListing> call,
                                    Response<DrinkDetailListing> response) {
                 if (response.isSuccessful()) {
-                    drinkListingAPIResonse.postValue(
+                    drinkListingAPIResponse.postValue(
                             new DrinkListingAPIResponse(response.body().getDrinks()));
                 } else {
                     int responseCode = response.code();
-                    drinkListingAPIResonse.postValue(new DrinkListingAPIResponse(responseCode));
+                    drinkListingAPIResponse.postValue(new DrinkListingAPIResponse(responseCode));
                 }
             }
 
             @Override
             public void onFailure(Call<DrinkDetailListing> call, Throwable t) {
-                drinkListingAPIResonse.postValue(new DrinkListingAPIResponse(t));
+                drinkListingAPIResponse.postValue(new DrinkListingAPIResponse(t));
             }
 
 
         });
 
-        return drinkListingAPIResonse;
+        return drinkListingAPIResponse;
 
     }
 
