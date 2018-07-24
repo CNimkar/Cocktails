@@ -10,7 +10,6 @@ import com.example.chai.cocktails.testUtils.DrinkProviderTestUtil;
 import com.example.chai.cocktails.utils.Constants;
 import com.example.chai.cocktails.testUtils.LiveDataTestUtil;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -26,7 +25,7 @@ public class CocktailRepositoryTest {
 
     @Before
     public void initRep(){
-        repository = CocktailRepository.getInstance();
+        repository = CocktailRepository.createNewInstance();
     }
 
     @Rule
@@ -50,7 +49,7 @@ public class CocktailRepositoryTest {
         }
     }
 
-    //not being tested due to LiveData issue that needs to be fixed.
+    @Test
     public void getDataWithIngredientFilter() {
 
         try {
@@ -62,7 +61,7 @@ public class CocktailRepositoryTest {
         }
     }
 
-    //not being tested due to LiveData issue that needs to be fixed.
+    @Test
     public void getDataWithGlassFilter() {
 
         try {
@@ -88,8 +87,7 @@ public class CocktailRepositoryTest {
         }
     }
 
-
-    //not being tested due to LiveData issue that needs to be fixed.
+    @Test
     public void getDataWithIngredientName() {
 
         try {
@@ -102,7 +100,7 @@ public class CocktailRepositoryTest {
         }
     }
 
-    //not being tested due to LiveData issue that needs to be fixed.
+    @Test
     public void getDataWithGlassName() {
         DrinkListingAPIResponse glassResponse = null;
         try {

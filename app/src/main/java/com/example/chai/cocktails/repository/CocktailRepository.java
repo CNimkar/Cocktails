@@ -27,7 +27,7 @@ public class CocktailRepository {
     private MutableLiveData<DrinkFullDetailsAPIResponse> drinkFullDetailsAPIResponse
             = new MutableLiveData<>();
 
-    public CocktailRepository() {
+    private CocktailRepository() {
         listingService = ListingService.retrofit.create(ListingService.class);
     }
 
@@ -36,6 +36,11 @@ public class CocktailRepository {
             cocktailRepository = new CocktailRepository();
         }
         return cocktailRepository;
+    }
+
+    //only for testing purposes
+    public static CocktailRepository createNewInstance(){
+        return new CocktailRepository();
     }
 
 
